@@ -5,15 +5,34 @@ Daniel Vogt
 London Wheeler
 Anita Wu
 Matthew King -->
+
 <head>
     <meta charset="utf-8">
     <title>Basketball</title>
+
     <!-- Link to CSS -->
     <link href="styles.css" rel="stylesheet">
+    
     <!-- Link to JavaScript -->
     <script src="scripts.js" type="text/javascript"></script>
 </head>
 
 <body>
-
+    <ul id="teamList">
+        <li>BYU</li>
+        <li>Gonzaga</li>
+        <li>Loyola</li>
+        <li>Pacific</li>
+        <li>Pepperdine</li>
+        <li>Portland</li>
+        <li>Saint Marys</li>
+        <li>San Diego</li>
+        <li>San Francisco</li>
+        <li>Santa Clara</li>
+    </ul>
+    <br><br>
+    <input type="button" value="Play Game" onclick="playGame()">
+    <br><br>
+    <p>Season Results:</p>
+    <p id="output"></p>
 </body>
