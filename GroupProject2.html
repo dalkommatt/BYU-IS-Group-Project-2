@@ -12,6 +12,12 @@
 
 <head>
     <title>Team Project 2</title>
+
+    <!-- Links -->
+    <link rel="stylesheet" type="text/css" href="styles.css">.
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bungee+Inline|Faster+One|Monoton"
+        rel="stylesheet">
+
     <script>
         //Team class
         class Team {
@@ -111,7 +117,7 @@
             var aoGames = [];
             var iCount1;
 
-            //clear <p> tag for rerun
+            //clear <h3> tag for rerun
             document.getElementById("output").innerHTML = "";
             output = "";
 
@@ -216,12 +222,15 @@
 
             }
             //Sort the arrays according to points,
-            aoTeams.sort(function(a, b){return a.iWins - b.iWins});
+            aoTeams.sort(function (a, b) {
+                return a.iWins - b.iWins
+            });
 
 
             //display all teams dynamically
             for (lastCount = 9; lastCount < iAwayCount; lastCount--) {
-                output += aoTeams[lastCount].sTeamName + ": " + aoTeams[lastCount].iWins + "-" + aoTeams[lastCount].iLosses + "<br>";
+                output += aoTeams[lastCount].sTeamName + ": " + aoTeams[lastCount].iWins + "-" + aoTeams[lastCount]
+                    .iLosses + "<br>";
                 document.getElementById("output").innerHTML = output;
             }
         }
@@ -230,25 +239,49 @@
 </head>
 
 <body>
-    <ul>
-        <li>BYU</li>
-        <li>Gonzaga</li>
-        <li>Loyola</li>
-        <li>Pacific</li>
-        <li>Pepperdine</li>
-        <li>Portland</li>
-        <li>Saint Marys</li>
-        <li>San Diego</li>
-        <li>San Francisco</li>
-        <li>Santa Clara</li>
-    </ul>
-
-    <br><br>
-    <input type="button" value="Play Game" onclick="playGame()">
-    <br><br>
-    <p>Season Results:</p>
-    <p id="output"></p>
-
+    <div class="main">
+        <ul>
+            <li><img src="byu.png">
+                <h3>BYU</h3>
+            </li>
+            <li><img src="gonzaga.jpg">
+                <h3>Gonzaga</h3>
+            </li>
+            <li><img src="loyola.png">
+                <h3>Loyola</h3>
+            </li>
+            <li><img src="pacific.png">
+                <h3>Pacific</h3>
+            </li>
+            <li><img src="pepperdine.png">
+                <h3>Pepperdine</h3>
+            </li>
+            <li><img src="portland.png">
+                <h3>Portland</h3>
+            </li>
+            <li><img src="saintmarys.png">
+                <h3>Saint Marys</h3>
+            </li>
+            <li><img src="sandiego.png">
+                <h3>San Diego</h3>
+            </li>
+            <li><img src="sanfrancisco.png">
+                <h3>San Francisco</h3>
+            </li>
+            <li><img src="santaclara.png">
+                <h3>Santa Clara</h3>
+            </li>
+        </ul>
+        <br>
+        <div class="buttonContainer">
+            <button class="btn btn-1 btn-1e" value="Play Game" onclick="playGame()">PLAY GAME</button>
+        </div>
+        <br>
+        <div class="resultContainer">
+            <h2 style="text-align: center!important;">Season Results:</h2>
+            <p id="output"></p>
+        </div>
+    </div>
 </body>
 
 </html>

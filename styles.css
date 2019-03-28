@@ -1,0 +1,155 @@
+body {
+    background-image: url("markus-spiske-1269203-unsplash.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media screen and (max-width: 1400px) {
+    body {
+        background-image: url("markus-spiske-1269203-unsplash.jpg");
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    display: grid;
+    position: absolute;
+    width: 40%;
+    right: 2vw;
+    max-height: 100vh;
+}
+
+.resultContainer {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    line-height: 40px;
+    overflow: auto;
+}
+
+ul {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    columns: 2;
+    column-width: auto;
+    text-align: center;
+    padding-bottom: 5px;
+    float: right;
+    align-self: center;
+    justify-self: center;
+}
+
+h3 {
+    font-size: 1.1vw;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+li {
+    padding: 10px;
+    line-height: 2vw;
+    height: 2vw;
+    text-align: center;
+    list-style-type: none;
+}
+
+li img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+input {
+    position: relative;
+}
+
+img {
+    float: left;
+    object-fit: cover;
+    width: auto;
+    height: 100%;
+    max-height: 3vw;
+}
+
+.buttonContainer {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    max-width: 40%;
+    align-self: center;
+    justify-self: center;
+}
+
+/* General button style (reset) */
+.btn {
+    border: none;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 1.5vw;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 10px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/* Button 1e */
+.btn-1e {
+    overflow: hidden;
+}
+
+.btn-1e:after {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.btn-1e:hover,
+.btn-1e:active {
+    color: #e14618;
+}
+
+.btn-1e:hover:after {
+    height: 260%;
+    opacity: 1;
+}
+
+.btn-1e:active:after {
+    height: 400%;
+    opacity: 1;
+}
