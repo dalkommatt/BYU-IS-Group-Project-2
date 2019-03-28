@@ -108,6 +108,7 @@
             //create variables
             var teamName;
             var homeGame;
+            var myGame;
             var awayGame;
             var myScore;
             var theirScore;
@@ -160,17 +161,22 @@
                         winOrLoss = "W";
                         aoTeams[iHomeCount].iWins = ((aoTeams[iHomeCount].iWins) + 1);
                         aoTeams[iAwayCount].iLosses = ((aoTeams[iAwayCount].iLosses) + 1);
+                        
                     }
                     else {
                         winOrLoss = "L";
                         aoTeams[iAwayCount].iWins = ((aoTeams[iAwayCount].iWins) + 1);
                         aoTeams[iHomeCount].iLosses = ((aoTeams[iHomeCount].iLosses) + 1);
+                        var homeWin = winOrLoss;
+                        var awayWin = "W";
                     }
 
                     //Add in away game and won game to array.
-                    var myGame = new Game(myScore, theirScore, winOrLoss);
+                    winOrLoss = homeWin;
+                    myGame = new Game(myScore, theirScore, winOrLoss);
                     aoTeams[iHomeCount].aoGames.push(myGame);
 
+                    winOrLoss = awayWin;
                     awayGame = new Game(theirScore, myScore, winOrLoss);
                     aoTeams[iAwayCount].aoGames.push(myGame);
                     }
