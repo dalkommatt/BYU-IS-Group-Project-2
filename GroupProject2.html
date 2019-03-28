@@ -161,23 +161,21 @@
                         winOrLoss = "W";
                         aoTeams[iHomeCount].iWins = ((aoTeams[iHomeCount].iWins) + 1);
                         aoTeams[iAwayCount].iLosses = ((aoTeams[iAwayCount].iLosses) + 1);
+                        var awayWinOrLoss = "L";
                         
                     }
                     else {
                         winOrLoss = "L";
                         aoTeams[iAwayCount].iWins = ((aoTeams[iAwayCount].iWins) + 1);
                         aoTeams[iHomeCount].iLosses = ((aoTeams[iHomeCount].iLosses) + 1);
-                        var homeWin = winOrLoss;
-                        var awayWin = "W";
+                        var awayWinOrLoss = "W";
                     }
 
                     //Add in away game and won game to array.
-                    winOrLoss = homeWin;
                     myGame = new Game(myScore, theirScore, winOrLoss);
                     aoTeams[iHomeCount].aoGames.push(myGame);
 
-                    winOrLoss = awayWin;
-                    awayGame = new Game(theirScore, myScore, winOrLoss);
+                    awayGame = new Game(theirScore, myScore, awayWinOrLoss);
                     aoTeams[iAwayCount].aoGames.push(myGame);
                     }
                     else
@@ -205,6 +203,7 @@
                     .iLosses + "<br>";
                 document.getElementById("output").innerHTML = output;
             }
+            console.log(aoTeams);
         }
     </script>
 
