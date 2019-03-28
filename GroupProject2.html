@@ -111,6 +111,10 @@
             var aoGames = [];
             var iCount1;
 
+            //clear <p> tag for rerun
+            document.getElementById("output").innerHTML = "";
+            output = "";
+
             //build teams from list
             for (iCount1 = 0; iCount1 < 10; iCount1++) {
                 var team = new BasketballTeam();
@@ -209,43 +213,18 @@
                 // Calculate Win/Loss Percentage
                 aoTeams[iHomeCount].calcWinLossPct();
 
-                //Sort the arrays according to points,
-                var asOutputArray = [];
-                var iHoldWins;
-                var sHoldTeam;
-                var iCount;
-                var iCount2;
 
-                for (iCount = 0; iCount < (aoTeams.length - 1); iCount++) {
-                  // for (iCount2 = iCount + 1 ; iCount2 < 9; iCount2++)
-                  //  {
-                    if (aoTeams[iCount].iWins < aoTeams[iCount + 1].iWins)
-                    {
+            }
+            //Sort the arrays according to points,
+            aoTeams.sort(function(a, b){return a.iWins - b.iWins});
 
-                        sHoldTeam = aoTeams[iCount];
 
-                        aoTeams[iCount] = aoTeams[iCount + 1];
-
-                        aoTeams[iCount + 1] = sHoldTeam;
-                    }
-                  // }
-                }
-
-            //display all of them dynamically
-            for (lastCount = 0; lastCount < iAwayCount; lastCount++) {
-                output += aoTeam[lastCount] + ": " + aoTeams[lastCount].iWins + "<br>";
+            //display all teams dynamically
+            for (lastCount = 9; lastCount < iAwayCount; lastCount--) {
+                output += aoTeams[lastCount].sTeamName + ": " + aoTeams[lastCount].iWins + "-" + aoTeams[lastCount].iLosses + "<br>";
                 document.getElementById("output").innerHTML = output;
             }
-
-
         }
-      }
-
-
-
-        // iWinPercentage = Number((iWinCount / iNumGames) * 100).toFixed(1);
-        // sWinOutput = "BYU record is " + iWinCount + "-" + (iNumGames - iWinCount) +
-        //     " with a winning percentage of " + iWinPercentage + "%"
     </script>
 
 </head>
