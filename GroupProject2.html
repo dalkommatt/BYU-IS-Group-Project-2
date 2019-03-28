@@ -66,7 +66,6 @@
             iTotalPointsAgainst = 0;
 
 
-
             //BasketballTeam class constructor
             constructor(teamName, wins, losses, dWinLossPct, aGames, iTotalPointsFor, iTotalPointsAgainst) {
                 super(teamName, wins, losses, dWinLossPct, aGames);
@@ -88,7 +87,7 @@
             }
         }
 
-        //Game class
+        // //Game class
         class Game {
             iMyScore;
             iTheirScore;
@@ -96,10 +95,11 @@
 
             //Game class constructor
             constructor(myScore, theirScore, winOrLoss) {
+                //super(teamName);
                 this.iMyScore = myScore;
                 this.iTheirScore = theirScore;
                 this.sWinOrLoss = winOrLoss;
-            }
+              }
         }
 
 
@@ -113,11 +113,13 @@
             var theirScore;
             var winOrLoss;
             var aoTeams = [];
-            var list = document.getElementsByTagName("UL")[0];
             var aoGames = [];
             var iCount1;
+            var iHomeCount;
+            var iAwayCount;
+            var lastCount;
 
-            //clear <h3> tag for rerun
+            //clear <p> tag/output variable for rerun
             document.getElementById("output").innerHTML = "";
             output = "";
 
@@ -130,13 +132,12 @@
 
             //nested loop to play games
             //outer loop plays cycles through teams
-            for (var iHomeCount = 0; iHomeCount < 9; iHomeCount++) {
-                wins = 0;
+            for (iHomeCount = 0; iHomeCount < 10; iHomeCount++) {
+                //inner loop cycles through each team's 18 games
+                for (iAwayCount = 0; iAwayCount < 10; iAwayCount++) {
 
-                //inner loop cycles through each team's 20 games
-                for (var iAwayCount = (iHomeCount + 1); iAwayCount < 10; iAwayCount++) {
-
-
+                    if(iAwayCount !== iHomeCount)
+                    {
                     //play home game
                     myScore = Math.floor(Math.random() * 101) + 5;
                     theirScore = Math.floor(Math.random() * 101);
@@ -147,80 +148,45 @@
                         theirScore = theirScore + Math.floor(Math.random() * 16);
                     }
 
+                    //Count score
                     aoTeams[iHomeCount].addPointsFor(myScore);
                     aoTeams[iAwayCount].addPointsAgainst(myScore);
 
                     aoTeams[iHomeCount].addPointsAgainst(theirScore);
                     aoTeams[iAwayCount].addPointsFor(theirScore);
 
+                    //Increment wins and losses
                     if (myScore > theirScore) {
-                        winOrLoss = true;
-                        aoTeams[iHomeCount].iWins = aoTeams[iHomeCount].iWins + 1;
-                        aoTeams[iAwayCount].iLosses = aoTeams[iHomeCount].iLosses + 1;
-                    } else {
-                        winOrLoss = false;
-                        aoTeams[iAwayCount].iWins = aoTeams[iAwayCount].iWins + 1;
-                        aoTeams[iHomeCount].iLosses = aoTeams[iHomeCount].iLosses + 1;
+                        winOrLoss = "W";
+                        aoTeams[iHomeCount].iWins = ((aoTeams[iHomeCount].iWins) + 1);
+                        aoTeams[iAwayCount].iLosses = ((aoTeams[iAwayCount].iLosses) + 1);
+                    }
+                    else {
+                        winOrLoss = "L";
+                        aoTeams[iAwayCount].iWins = ((aoTeams[iAwayCount].iWins) + 1);
+                        aoTeams[iHomeCount].iLosses = ((aoTeams[iHomeCount].iLosses) + 1);
                     }
 
+                    //Add in away game and won game to array.
                     var myGame = new Game(myScore, theirScore, winOrLoss);
                     aoTeams[iHomeCount].aoGames.push(myGame);
 
-                    if (winOrLoss === false) {
-                        winOrLoss = true;
-                    } else {
-                        winOrLoss = false;
-                    }
-
-                    //push scores
                     awayGame = new Game(theirScore, myScore, winOrLoss);
                     aoTeams[iAwayCount].aoGames.push(myGame);
-
-
-                    //play away game
-                    myScore = Math.floor(Math.random() * 101);
-                    theirScore = Math.floor(Math.random() * 101 + 5);
-
-                    while (myScore === theirScore) {
-                        myScore = myScore + Math.floor(Math.random() * 16);
-                        theirScore = theirScore + Math.floor(Math.random() * 16);
                     }
+                    else
+                    {
 
-                    aoTeams[iHomeCount].addPointsFor(myScore);
-                    aoTeams[iAwayCount].addPointsAgainst(myScore);
-
-                    aoTeams[iHomeCount].addPointsAgainst(theirScore);
-                    aoTeams[iAwayCount].addPointsFor(theirScore);
-
-                    if (myScore > theirScore) {
-                        winOrLoss = true;
-                        aoTeams[iHomeCount].iWins = aoTeams[iHomeCount].iWins + 1;
-                        aoTeams[iAwayCount].iLosses = aoTeams[iHomeCount].iLosses + 1;
-                    } else {
-                        winOrLoss = false;
-                        aoTeams[iAwayCount].iWins = aoTeams[iAwayCount].iWins + 1;
-                        aoTeams[iHomeCount].iLosses = aoTeams[iHomeCount].iLosses + 1;
                     }
-
-                    var myGame = new Game(myScore, theirScore, winOrLoss);
-                    aoTeams[iHomeCount].aoGames.push(myGame);
-
-                    if (winOrLoss === false) {
-                        winOrLoss = true;
-                    } else {
-                        winOrLoss = false;
-                    }
-
-                    //push scores
-                    awayGame = new Game(theirScore, myScore, winOrLoss);
-                    aoTeams[iAwayCount].aoGames.push(myGame);
-
                 }
-                // Calculate Win/Loss Percentage
-                aoTeams[iHomeCount].calcWinLossPct();
-
-
             }
+
+            //For loop to calculate win loss Percentage
+            for(iCount1=0; iCount1 < 10; iCount1++)
+            {
+              aoTeams[iCount1].calcWinLossPct();
+            }
+
             //Sort the arrays according to points,
             aoTeams.sort(function (a, b) {
                 return a.iWins - b.iWins
@@ -228,7 +194,7 @@
 
 
             //display all teams dynamically
-            for (lastCount = 9; lastCount < iAwayCount; lastCount--) {
+            for (lastCount = 9; lastCount >= 0; lastCount--) {
                 output += aoTeams[lastCount].sTeamName + ": " + aoTeams[lastCount].iWins + "-" + aoTeams[lastCount]
                     .iLosses + "<br>";
                 document.getElementById("output").innerHTML = output;
